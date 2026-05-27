@@ -34,7 +34,7 @@ export const useMenuStore = defineStore('menuStore', () => {
       label: 'User',
       key: 'a-user',
       icon: renderIcon(PersonOutline),
-      onClick: () => router.push('/A/user')
+      onClick: () => router.push('/C/user')
     },
     {
       label: 'Admin',
@@ -45,13 +45,13 @@ export const useMenuStore = defineStore('menuStore', () => {
           label: 'Member',
           key: 'a-admin-member',
           icon: renderIcon(PersonCircleOutline),
-          onClick: () => router.push('/A/admin/member')
+          onClick: () => router.push('/C/admin/member')
         },
         {
           label: 'Store',
           key: 'a-admin-store',
           icon: renderIcon(StorefrontOutline),
-          onClick: () => router.push('/A/admin/store')
+          onClick: () => router.push('/C/admin/store')
         }
       ]
     },
@@ -64,13 +64,13 @@ export const useMenuStore = defineStore('menuStore', () => {
           label: 'Account',
           key: 'a-manager-account',
           icon: renderIcon(PersonCircleOutline),
-          onClick: () => router.push('/A/manager/account')
+          onClick: () => router.push('/C/manager/Cccount')
         },
         {
           label: 'Performance',
           key: 'a-manager-performance',
           icon: renderIcon(StatsChartOutline),
-          onClick: () => router.push('/A/manager/performance')
+          onClick: () => router.push('/C/manager/performance')
         }
       ]
     },
@@ -83,13 +83,13 @@ export const useMenuStore = defineStore('menuStore', () => {
           label: 'User',
           key: 'a-staff-user',
           icon: renderIcon(PersonOutline),
-          onClick: () => router.push('/A/staff/user')
+          onClick: () => router.push('/C/staff/user')
         },
         {
           label: 'Checkout',
           key: 'a-staff-checkout',
           icon: renderIcon(CartOutline),
-          onClick: () => router.push('/A/staff/checkout')
+          onClick: () => router.push('/C/staff/checkout')
         }
       ]
     }
