@@ -16,9 +16,15 @@ interface AuthRegisterResponse {
   role: string
 }
 
+interface AuthLoginStep1Payload {
+  email: string
+  password: string
+}
+
 interface AuthLoginPayload {
   email: string
   password: string
+  code: string
 }
 
 interface AuthLoginStoreAccessItem {
@@ -40,6 +46,12 @@ interface AuthLoginResponse {
   role: string
   storeAccess: AuthLoginStoreAccessItem[]
   tokenPair: AuthLoginTokenPair
+}
+
+interface AuthLoginStep1Response {
+  requireOtp: boolean
+  email: string
+  loginResponse: AuthLoginResponse | null
 }
 
 interface AuthRegisterAdminPayload {
@@ -66,7 +78,18 @@ export const useAuthApi = {
   },
 
   /*
-   * 登入
+   * 登入 step1（email + 密碼）。若帳號需要 OTP，後端會寄驗證碼到 email 並回 requireOtp=true；
+   * 否則直接回完整登入結果（loginResponse 含 tokenPair）。
+  */
+  loginStep1: (payload: AuthLoginStep1Payload): AxiosPromise<AuthLoginStep1Response> => {
+    return useApiRequest.post({
+      url: PublicApiRoute.AuthLoginStep1,
+      data: payload
+    })
+  },
+
+  /*
+   * 登入（email + 密碼 + OTP code）。僅供 step1 觸發 requireOtp=true 的帳號使用。
   */
   login: (payload: AuthLoginPayload): AxiosPromise<AuthLoginResponse> => {
     return useApiRequest.post({

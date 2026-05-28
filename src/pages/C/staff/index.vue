@@ -38,11 +38,15 @@ const handleLogin = async () => {
 
 	state.value.feature.loading = true
 	try {
-		const { data } = await useAuthApi.login({
+		const { data } = await useAuthApi.loginStep1({
 			email: state.value.data.email,
 			password: state.value.data.password
 		})
-		message.success(`歡迎 ${data.name}`)
+		if (data.requireOtp) {
+			message.error('此帳號需要管理者驗證，請改由管理者登入頁面登入')
+			return
+		}
+		message.success(`歡迎 ${data.loginResponse?.name}`)
 		router.push('/')
 	}
 	catch {

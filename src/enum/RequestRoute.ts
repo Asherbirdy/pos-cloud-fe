@@ -1,5 +1,6 @@
 export enum PublicApiRoute {
     AuthLogin = '/auth/login',
+    AuthLoginStep1 = '/auth/login/step1',
     AuthRegister = '/auth/register',
     AuthRegisterAdmin = '/auth/register-admin',
     DevTest = '/dev/test'
